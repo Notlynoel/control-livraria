@@ -39,9 +39,9 @@
 	<!-- CONFIGURAÇÃO PARA BANCO DE DADOS LOCAL  -->
 	 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost/control_livraria" />
+		<property name="url" value="jdbc:mysql://localhost/livraria" />
 		<property name="username" value="root" />
-		<property name="password" value="..MySQL*963.." />
+		<property name="password" value="root" />
 	</bean>    
 	
 	<!-- CONFIGURAÇÃO PARA BANCO DE DADOS NA NUVEM DO BLUEMIX
@@ -55,9 +55,9 @@
 	<!-- CONFIGURAÇÃO PARA BANCO DE DADOS NA NUVEM DA AMAZON  
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://escola-informatica.ckyoid8qyoc5.sa-east-1.rds.amazonaws.com:3306/livraria" />
+		<property name="url" value="jdbc:mysql://llllllllllllllllllllll.rds.amazonaws.com:3306/livraria" />
 		<property name="username" value="root" />
-		<property name="password" value="..Teste*963.." />
+		<property name="password" value="root" />
 	</bean>  -->
 	
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">

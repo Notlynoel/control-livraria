@@ -1,0 +1,37 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+        version="2.0">
+         <!-- 
+        <persistence-unit name="livraria"  transaction-type="RESOURCE_LOCAL">
+     	<provider>org.hibernate.ejb.HibernatePersistence</provider>
+     	<properties>
+     		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://us-cdbr-iron-east-04.cleardb.net/ad_47f3d41610f405c"/>
+			<property name="javax.persistence.jdbc.user" value="b7fd9d080d820f" />
+			<property name="javax.persistence.jdbc.password" value="a4413629" />
+			
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/> 
+			<property name="hibernate.connection.shudown" value="true"/> 
+			<property name="hibernate.show_sql" value="true"/> 
+			<property name="hibernate.format_sql" value="true"/>  			
+     				
+     	</properties>     	
+		</persistence-unit>
+		
+       CONFIGURAÇÃO PARA BANCO LOCAL   --> 
+     <persistence-unit name="livraria">
+     	<provider>org.hibernate.ejb.HibernatePersistence</provider>     
+     	<properties>
+     		<property name="javax.persistence.jdbc.driver" 
+     			value="com.mysql.jdbc.Driver"/>
+     		<property name="javax.persistence.jdbc.url" 
+     			value="jdbc:mysql://localhost/control_livraria"/>
+     		<property name="javax.persistence.jdbc.user" value="root"/>
+     		<property name="javax.persistence.jdbc.password" value="..MySQL*963.."/>     		
+     		<property name="hibernate.dialect" 
+     			value="org.hibernate.dialect.MySQL5InnoDBDialect"/>     			
+     		<property name="hibernate.hbm2ddl.auto" value="update"/>
+     		<property name="hibernate.show_sql" value="true"/>
+     	</properties>
+     </persistence-unit>     
+</persistence>

@@ -1,0 +1,42 @@
+<!DOCTYPE html >
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<title>Livraria Notlinoel - <ui:insert name="titulo"/> </title>
+		<meta charset="UTF-8"/>
+		<link href="#{request.contextPath}/css/tema.css" rel="stylesheet"/>		
+		<ui:insert name="header" />		
+		<link rel="stylesheet" href="#{request.contextPath}/css/tema.css" />
+	</h:head>
+	
+	<h:body>
+		<h:form>
+			<p:menubar  >
+			
+				<p:menuitem value="Usuários" url="/usuario/manutencao/" icon="usuario-icon" />
+				
+				<p:menuitem value="Livros" url="/livro/manutencao/" icon="livros-icon"/>				
+				
+				<p:menuitem value="Clientes" url="/clientes/manutencao/" icon="clientes-icon" />
+					
+				<p:menuitem value="Sobre" action="#{usuarioBean.autor}"  icon="sobre-icon" />
+				
+				<p:menuitem value="Help" url="/help/manutencao/" icon="help-icon" />
+				
+				
+				<p:menuitem value="Sair" action="#{authenticationContext.logout}" icon="sair-icon" />
+				
+			</p:menubar>
+			
+		</h:form>
+		<ui:insert name="principal" />
+		
+	</h:body>
+
+
+</html>

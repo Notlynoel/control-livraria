@@ -1,0 +1,31 @@
+.salvar-icon{background: url("icons/salvar.png") !important;}
+.cadastrados-icon{background: url("icons/cadastrados.png") !important;}
+.adicionar-icon{background: url("icons/adicionar.png") !important;}
+.editar-icon{background: url("icons/editar.png") !important;}
+.excluir-icon{background: url("icons/excluir.png") !important;}
+.cancelar-icon{background: url("icons/cancelar.png") !important;}
+
+.usuario-icon{background: url("icons/usuario.png") !important;}
+.livros-icon{background: url("icons/livros.png") !important;}
+.clientes-icon{background: url("icons/clientes.png") !important;}
+.sobre-icon{background: url("icons/sobre.png") !important;}
+.help-icon{background: url("icons/help.png") !important;}
+.sair-icon{background: url("icons/sair.png") !important;}
+
+
+
+
+
+.ui-growl{
+	top: 10%;
+	left: 40%;
+}
+
+.menu-template{
+	position: absolute;
+}
+
+.principal-template{
+	position: absolute;
+	margin-left: 190px;
+}

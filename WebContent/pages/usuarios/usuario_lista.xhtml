@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="header">
+		<meta charset="utf-8" />
+	</ui:define>
+
+	<p:panel header="Usuários Cadastrados" rendered="#{usuarioBean.usuario == null}">
+			<p:commandButton icon="adicionar-icon" value="Novo Usuário" action="#{usuarioBean.novoUsuario}" 
+			update="@form"/> <br/><br/>
+	
+		
+			
+		<p:dataTable value="#{usuarioBean.usuarios}" var="usuario"
+			style="width:70%; margin-top:10px;">
+			<p:column headerText="Nome" width="250">
+				<h:outputText value="#{usuario.nome}"/>
+			</p:column>
+			<p:column headerText="Login">
+				<h:outputText value="#{usuario.login}"/>
+			</p:column>
+			<p:column headerText="Senha">
+				<h:outputText value="#{usuario.senha}"/>		
+			</p:column>
+			
+			<p:column headerText="Opções" style="text-align:center;" exportable="false">
+					<p:commandButton icon="editar-icon"  action="#{usuarioBean.editar(usuario)}" update=":@form"/>
+										
+					<p:commandButton icon="excluir-icon" actionListener="#{usuarioBean.prepararExclusao(usuario)}"  
+						oncomplete="PF('confirmarExclusaoDialog').show();" 
+						style="margin-left:15px; color:red" update="@form"/>
+				</p:column>
+		</p:dataTable>
+			<!--Código de mensagem de alerta ao excluir um objeto -->
+			<p:confirmDialog message="Deseja realmente excluir o nome #{usuarioBean.usuarioParaExclusao.nome}?" widgetVar="confirmarExclusaoDialog">
+				<p:commandButton value="Sim" action="#{usuarioBean.excluir()}" 
+					oncomplete="PF('confirmarExclusaoDialog').hide();" update="@form"/>
+				<p:commandButton value="Não" oncomplete="PF('confirmarExclusaoDialog').hide();"/>
+			</p:confirmDialog>
+		
+	</p:panel>
+
+</html>
+

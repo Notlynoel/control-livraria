@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+		<p:panel header="Livros Cadastrados" rendered="#{livroBean.livro == null}">
+			<p:commandButton icon="adicionar-icon" value="Novo Livro" action="#{livroBean.novoLivro}" update="@form"/> <br/><br/>
+			
+			<p:dataTable value="#{livroBean.livros}" var="livro" 
+					paginator="true" rows="5" paginatorPosition="top" rowsPerPageTemplate="5, 10, 15" id="tabela-livros-cadastrados">
+				<p:column headerText="Titulo" sortBy="#{livro.titulo}" filterBy="#{livro.titulo}" style="width:230px;">
+					<h:outputText value="#{livro.titulo}" />
+				</p:column>
+
+				<p:column headerText="Autor" sortBy="#{livro.autor}" filterBy="#{livro.autor}" style="width:170px;">
+					<h:outputText value="#{livro.autor}" />
+				</p:column>
+
+				<p:column headerText="ISBN" sortBy="#{livro.isbn}" filterBy="#{livro.isbn}">
+					<h:outputText value="#{livro.isbn}" />
+				</p:column>
+
+				<p:column headerText="Páginas" sortBy="#{livro.qtdPagina}">
+					<h:outputText value="#{livro.qtdPagina}" />
+				</p:column>
+
+				<p:column headerText="Valor" sortBy="#{livro.valor}" style="width:70px;">
+					<h:outputText value="#{livro.valor}" />
+				</p:column>
+
+				<p:column headerText="QTD" sortBy="#{livro.quantidade}" style="width:70px;">
+					<h:outputText value="#{livro.quantidade}" />
+				</p:column>
+
+				<p:column headerText="Tipo" sortBy="#{livro.tipo.label}">
+					<h:outputText value="#{livro.tipo.label}" />
+				</p:column>
+
+				<p:column headerText="Publicação" sortBy="#{livro.dataPublicacao}">
+					<h:outputText value="#{livro.dataPublicacao}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="Opções" style="text-align:center;" exportable="false">
+					<p:commandButton icon="editar-icon"  action="#{livroBean.editar(livro)}" update=":@form"/>
+										
+					<p:commandButton icon="excluir-icon" actionListener="#{livroBean.prepararExclusao(livro)}"  
+						oncomplete="PF('confirmarExclusaoDialog').show();" 
+						style="margin-left:15px; color:red" update="@form"/>
+				</p:column>
+			</p:dataTable>
+			<br/>
+			<!-- CÓDIGO PARA EXPORTAÇÃO DO DOCUMENTO PARA O EXCEL -->
+			<h:commandLink>
+				<h:graphicImage value="/resources/imagens/exportar-xls.png" />
+				<p:dataExporter type="xls" target="tabela-livros-cadastrados"
+					fileName="Livros" />
+			</h:commandLink>
+			<!-- CÓDIGO PARA EXPORTAÇÃO DO DOCUMENTO PARA PDF -->
+			<h:commandLink style="margin-left:25px;">
+				<h:graphicImage value="/resources/imagens/exportar-pdf.png" />
+				<p:dataExporter type="pdf" target="tabela-livros-cadastrados"
+					fileName="Livros" encoding="iso-8859-1" />
+			</h:commandLink>
+			<!--Código de mensagem de alerta ao excluir um objeto -->
+			<p:confirmDialog message="Deseja realmente excluir o livro #{livroBean.livroParaExclusao.titulo}?" widgetVar="confirmarExclusaoDialog">
+				<p:commandButton value="Sim" action="#{livroBean.excluir()}" 
+					oncomplete="PF('confirmarExclusaoDialog').hide();" update="@form"/>
+				<p:commandButton value="Não" oncomplete="PF('confirmarExclusaoDialog').hide();"/>
+			</p:confirmDialog>		
+		</p:panel>
+	
+</html>

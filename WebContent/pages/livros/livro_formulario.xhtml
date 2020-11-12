@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+			
+		<p:panel header="Cadastro de Livros" style="width:730px" rendered="#{livroBean.livro != null}"
+			id="lista-livro-panel">
+			<p:panelGrid columns="4"  style="margin-top: 10px">
+				<h:outputLabel value="Título"/>
+				<p:inputText value="#{livroBean.livro.titulo}" />
+				<h:outputLabel value="Autor"/>
+				<p:inputText value="#{livroBean.livro.autor}"/>
+				<h:outputLabel value="ISBN"/>
+				<p:inputText value="#{livroBean.livro.isbn}"/>
+				<h:outputLabel value="Qtd Páginas"/>
+				<p:inputText value="#{livroBean.livro.qtdPagina}"/>
+				<h:outputLabel value="Valor"/>
+				<p:inputText value="#{livroBean.livro.valor}"/>				
+				<h:outputLabel value="Quantidade"/>
+				<p:inputText value="#{livroBean.livro.quantidade}"/>
+				
+				<h:outputLabel value="Tipo" />
+				<p:selectOneMenu value="#{livroBean.livro.tipo}" >
+					<f:selectItem itemLabel="Selecione" itemValue="#{null}" />
+					<f:selectItems value="#{livroBean.tipos}" var="tipo"
+						itemLabel="#{tipo.label}" itemValue="#{tipo}"/>
+				</p:selectOneMenu>												
+				<h:outputLabel value="Data Publicação"/>
+				<p:calendar value="#{livroBean.livro.dataPublicacao}" pattern="dd/MM/yyyy"/>				
+			</p:panelGrid>
+			
+			<br/>
+			<p:commandButton icon="salvar-icon" value="Cadastrar" action="#{livroBean.cadastrar()}" 
+				update="@form" id="btn-salvar" />
+			<p:commandButton icon="cadastrados-icon" value="Cadastrados" action="#{livroBean.voltar}"
+				update="@form" immediate="true" />
+		</p:panel>	
+		<!-- CÓDIGO PARA BLOQUEAR A TELA ENQUANDO SALVA UM LIVRO -->
+		<p:blockUI block="lista-livro-panel" trigger="btn-salvar"/>
+	
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pretty-config xmlns="http://ocpsoft.com/prettyfaces/3.3.3" 
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+               xsi:schemaLocation="http://ocpsoft.com/prettyfaces/3.3.3
+   http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.3.xsd">
+   
+   <url-mapping id="livroManutencao">
+   	<pattern value="/livro/manutencao/" />
+   	<view-id value="/pages/livros/livro_wrapper.jsf"/>
+   	<action onPostback="false">#{livroBean.iniciarBean}</action>
+   </url-mapping>
+   
+   <url-mapping id="usuarioManutencao">
+   	<pattern value="/usuario/manutencao/" />
+   	<view-id value="/pages/usuarios/usuario_wrapper.jsf"/>
+   	<action onPostback="false">#{usuarioBean.iniciarBean}</action>
+   </url-mapping>
+   
+      
+</pretty-config>
+
+
+
+
+
+
+
+
+
+
+
+
